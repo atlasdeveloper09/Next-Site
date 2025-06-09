@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Uma aplicação web moderna para usuários profissionais que desejam melhorar a gestão do seu servidor." />
+  <meta name="author" content="Next Studios" />
+  <meta name="keywords" content="web, aplicação, studios, discord, bots, discord bots, servidor, loja, next" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Next Studios" />
+  <meta property="og:description"
+    content="Descubra soluções para o seu servidor com nossos bots modernos e eficientes." />
+  <meta property="og:image"
+    content="https://cdn.discordapp.com/attachments/1320520808170258518/1336175501529583667/Logo_2.png?ex=67a97168&is=67a81fe8&hm=bf16480299c1e30b472eb2492ae419b6f288f6fb14f5a18f541a0d1f4579eb3b&" />
+  <meta property="og:type" content="website" />
+  <title>Next Studios</title>
+  <script>
+    document.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey && e.key === 'u') || e.key === 'F12') {
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    });
+
+    setInterval(function () {
+      const devtools = /./;
+      devtools.toString = function () {
+        alert("Ferramentas de desenvolvedor detectadas!");
+      };
+    }, 1000);
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
