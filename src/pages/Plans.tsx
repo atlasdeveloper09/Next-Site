@@ -31,7 +31,7 @@ const plans: Plan[] = [
   {
     id: 'comunidade',
     name: "Bot de Comunidade",
-    price: "R$ 45,00",
+    price: "R$ 30,00",
     description: "Profissionalize o atendimento/moderação/diversão do seu servidor.",
     features: [
       "Personalização Total",
@@ -46,7 +46,7 @@ const plans: Plan[] = [
   {
     id: 'comunidade',
     name: "Bot de Comunidade",
-    price: "R$ 180,00",
+    price: "R$ 120,00",
     description: "Profissionalize o atendimento/moderação/diversão do seu servidor.",
     features: [
       "Personalização Total",
