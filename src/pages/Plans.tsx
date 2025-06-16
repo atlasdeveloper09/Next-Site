@@ -154,6 +154,39 @@ function Features() {
   );
 }
 
+const faqs = [
+  {
+    question: "Como funciona a personalização dos bots?",
+    answer: "Você pode ajustar as funcionalidades dos bots para atender às necessidades específicas do seu servidor."
+  },
+  {
+    question: "Os bots têm suporte 24/7?",
+    answer: "Sim, nossa equipe está disponível para ajudar a qualquer momento."
+  },
+  {
+    question: "Posso mudar de plano depois de contratar?",
+    answer: "Sim, você pode fazer o upgrade ou downgrade do plano a qualquer momento."
+  },
+];
+
+function FAQ() {
+  return (
+    <section className="py-20 bg-white dark:bg-gradient-to-r dark:from-[#000000] dark:via-[#02040d] dark:to-[#000000]">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-8 text-black dark:text-white">Perguntas Frequentes</h2>
+        <div className="space-y-6 max-w-4xl mx-auto">
+          {faqs.map((faq, index) => (
+            <div key={index} className="border p-4 rounded-lg bg-gray-100 dark:bg-[#131315]">
+              <h3 className="text-xl font-semibold text-black dark:text-white">{faq.question}</h3>
+              <p className="text-muted-foreground mt-2 text-black dark:text-gray-300">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function Plans() {
   return (
     <>
@@ -173,6 +206,7 @@ export function Plans() {
         </div>
       </section>
       <Features />
+      <FAQ />
     </>
   );
 }

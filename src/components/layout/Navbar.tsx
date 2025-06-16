@@ -5,6 +5,7 @@ import { useTheme } from '@/components/theme-provider';
 import { useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
+
 export function Navbar() {
   const { theme, setTheme } = useTheme();
   const location = useLocation();
@@ -18,6 +19,7 @@ export function Navbar() {
     { path: '/commands', label: 'Comandos' },
     { path: '/webhook', label: 'Webhook' },
     { path: '/rules', label: 'Regras' },
+    { path: '/team', label: 'Equipe' },
   ];
 
   const NavLinks = () => (
@@ -42,18 +44,24 @@ export function Navbar() {
           <div className="flex items-center space-x-8">
             <Link to="/" className="flex items-center space-x-3">
               <div className="w-8 h-8 relative flex-shrink-0">
-                {/* <img
-                  src="https://cdn.discordapp.com/attachments/1320520808170258518/1336175501290635295/Logo_1.png?ex=67af6028&is=67ae0ea8&hm=597e8ba6c23ea515e1147a440e411c3b840cbd68171e9cf2d7b4f397b5d264c9&"
-                  alt="next"
-                  className="w-full h-full object-contain"
-                  loading="eager"
-                /> */}
+                {theme === 'dark' ? (
+                  <img
+                    src="https://media.discordapp.net/attachments/1383169820182319387/1383960024384278621/NS_2-1-1-removebg-preview.png?ex=6850b0b6&is=684f5f36&hm=dfdad78903a665d645b999dd607d6db8f1af106d1da7f179fcff57ea5ef4e9bb&=&format=webp&quality=lossless"
+                    alt="next-dark"
+                    className="w-full h-full object-contain"
+                    loading="eager"
+                  />
+                ) : (
+                  <img
+                    src="https://media.discordapp.net/attachments/1383169820182319387/1383965812288655401/nextelsystem-Photoroom.png?ex=6850b61a&is=684f649a&hm=382674eb253989dcd932a1617376f7b9937973b0d2fa99f6b410ecbdb06d18d8&=&format=webp&quality=lossless"
+                    alt="next-light"
+                    className="w-full h-full object-contain"
+                    loading="eager"
+                  />
+                )}
               </div>
               <span className="font-bold text-xl hidden sm:inline">Next Bots</span>
             </Link>
-            {/* <div className="hidden md:flex space-x-6">
-              <NavLinks />
-            </div> */}
           </div>
           <div className="hidden md:flex space-x-6 justify-center items-center">
             <NavLinks />
