@@ -49,6 +49,8 @@ const teamMembers: TeamMember[] = [
 
 export function Team() {
   const [userData, setUserData] = useState<Record<string, { name: string; avatar: string }>>({});
+  const [isLoading, setIsLoading] = useState(true); // Estado para controlar o carregamento
+
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -78,10 +80,26 @@ export function Team() {
       }
 
       setUserData(fetchedData);
+      setIsLoading(false); // Define como carregado após buscar os dados
     };
 
     fetchUserData();
   }, []);
+
+  if (isLoading) {
+    // Tela de carregamento ocupando toda a página
+    return (
+      <div className="fixed inset-0 flex flex-col items-center justify-center bg-gray-100 dark:bg-[#131315]">
+        <img
+          src="https://i.gifer.com/origin/4d/4dc11d17f5292fd463a60aa2bbb41f6a_w200.gif" // Substitua pelo caminho correto do GIF
+          alt="Carregando..."
+          className="w-16 h-16 mb-4"
+        />
+        <h1 className="text-2xl font-bold text-black dark:text-white">Carregando informações...</h1>
+        <p className="text-gray-500 dark:text-gray-400">Por favor, aguarde enquanto carregamos os dados da equipe.</p>
+      </div>
+    );
+  }
 
   return (
     <section className="py-20 bg-white dark:bg-gradient-to-r dark:from-[#000000] dark:via-[#02040d] dark:to-[#000000]">

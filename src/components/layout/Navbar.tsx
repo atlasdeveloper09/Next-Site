@@ -44,21 +44,23 @@ export function Navbar() {
           <div className="flex items-center space-x-8">
             <Link to="/" className="flex items-center space-x-3">
               <div className="w-8 h-8 relative flex-shrink-0">
-                {theme === 'dark' ? (
-                  <img
-                    src="https://media.discordapp.net/attachments/1383169820182319387/1383960024384278621/NS_2-1-1-removebg-preview.png?ex=6850b0b6&is=684f5f36&hm=dfdad78903a665d645b999dd607d6db8f1af106d1da7f179fcff57ea5ef4e9bb&=&format=webp&quality=lossless"
-                    alt="next-dark"
-                    className="w-full h-full object-contain"
-                    loading="eager"
-                  />
-                ) : (
-                  <img
-                    src="https://media.discordapp.net/attachments/1383169820182319387/1383965812288655401/nextelsystem-Photoroom.png?ex=6850b61a&is=684f649a&hm=382674eb253989dcd932a1617376f7b9937973b0d2fa99f6b410ecbdb06d18d8&=&format=webp&quality=lossless"
-                    alt="next-light"
-                    className="w-full h-full object-contain"
-                    loading="eager"
-                  />
-                )}
+                {/* 
+    {theme === 'dark' ? (
+      <img
+        src="./photo/dark.png"
+        alt="next-dark"
+        className="w-full h-full object-contain"
+        loading="eager"
+      />
+    ) : (
+      <img
+        src="./photo/dark.png"
+        alt="next-light"
+        className="w-full h-full object-contain"
+        loading="eager"
+      />
+    )}
+    */}
               </div>
               <span className="font-bold text-xl hidden sm:inline">Next Bots</span>
             </Link>

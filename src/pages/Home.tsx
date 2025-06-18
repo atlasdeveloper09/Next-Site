@@ -38,13 +38,13 @@ export function Home() {
 
   const metrics = [
     {
-      value: "10",
+      value: "7",
       label: "Clientes",
       description: "Confie em nossa plataforma diariamente"
     },
     {
-      value: "10",
-      label: "Servidores",
+      value: "7",
+      label: "Bots Adquiridos",
       description: "Utilizando nossos sistema"
     }
   ];
