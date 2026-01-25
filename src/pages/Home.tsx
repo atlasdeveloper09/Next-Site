@@ -130,7 +130,7 @@ export function Home() {
               A solução ideal para transformar o seu servidor Discord em uma ferramenta poderosa e eficiente.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a href='https://discord.gg/nextbot' target="_blank" rel="noopener noreferrer">
+              <a href='https://discord.gg/icones' target="_blank" rel="noopener noreferrer">
                 <Button size="lg" variant="outline" className="min-w-[200px]">
                   <ExternalLink className="mr-2 h-5 w-5" />
                   Suporte
