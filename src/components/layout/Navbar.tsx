@@ -5,7 +5,6 @@ import { useTheme } from '@/components/theme-provider';
 import { useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-
 export function Navbar() {
   const { theme, setTheme } = useTheme();
   const location = useLocation();
@@ -15,10 +14,8 @@ export function Navbar() {
 
   const navLinks = [
     { path: '/', label: 'Inicio' },
-    { path: '/plans', label: 'Planos' },
     { path: '/commands', label: 'Comandos' },
     { path: '/webhook', label: 'Webhook' },
-    { path: '/rules', label: 'Regras' },
     { path: '/team', label: 'Equipe' },
   ];
 
@@ -44,27 +41,18 @@ export function Navbar() {
           <div className="flex items-center space-x-8">
             <Link to="/" className="flex items-center space-x-3">
               <div className="w-8 h-8 relative flex-shrink-0">
-                {/* 
-    {theme === 'dark' ? (
-      <img
-        src="./photo/dark.png"
-        alt="next-dark"
-        className="w-full h-full object-contain"
-        loading="eager"
-      />
-    ) : (
-      <img
-        src="./photo/dark.png"
-        alt="next-light"
-        className="w-full h-full object-contain"
-        loading="eager"
-      />
-    )}
-    */}
+                {/* Avatar fixo - sem verificação de tema */}
+                <img
+                  src="https://imgs.search.brave.com/9Cq7EjjrV3qMAAUHLaQldnWV_sA_DUtFvAcn-PaU9bE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZs/YXRpY29uLmNvbS8y/NTYvNzY0OC83NjQ4/OTI5LnBuZw"
+                  alt="Next Bots Logo"
+                  className="w-full h-full object-contain rounded-full border-2 border-gray-300 dark:border-gray-600"
+                  loading="eager"
+                />
               </div>
               <span className="font-bold text-xl hidden sm:inline">Next Bots</span>
             </Link>
           </div>
+          
           <div className="hidden md:flex space-x-6 justify-center items-center">
             <NavLinks />
           </div>

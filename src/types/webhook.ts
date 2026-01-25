@@ -9,6 +9,10 @@ export interface EmbedFooter {
   icon_url?: string;
 }
 
+export interface EmbedImage {
+  url: string;
+}
+
 export interface EmbedData {
   title?: string;
   description?: string;
@@ -16,6 +20,8 @@ export interface EmbedData {
   fields?: EmbedField[];
   footer?: EmbedFooter;
   timestamp?: string;
+  thumbnail?: EmbedImage;
+  image?: EmbedImage;
 }
 
 export interface WebhookData {

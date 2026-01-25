@@ -1,3 +1,28 @@
+/* Barra de rolagem customizada para textarea de descrição do embed */
+
+.scrollbar-custom {
+  scrollbar-width: thin;
+  scrollbar-color: #bcbcff #23232b;
+  overflow-y: scroll !important;
+  resize: none !important;
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 10px;
+  background: #23232b;
+}
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: #bcbcff !important;
+  border-radius: 8px;
+  min-height: 24px;
+  border: 2px solid #23232b;
+}
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: #a0a0ff !important;
+}
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: #23232b !important;
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;

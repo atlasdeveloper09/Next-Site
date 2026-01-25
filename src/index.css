@@ -74,7 +74,4 @@
   }
 }
 
-::-webkit-scrollbar {
-  display: none;
-  background-color: #24242400;
-}
+/* Removido background-color global do scrollbar para não sobrescrever customização */

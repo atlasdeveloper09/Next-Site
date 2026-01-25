@@ -10,9 +10,10 @@ interface WebhookEmbedProps {
   embed: EmbedData;
   onUpdate: (embed: EmbedData) => void;
   onRemove: () => void;
+  requiredDescription?: boolean;
 }
 
-export default function WebhookEmbed({ embed, onUpdate, onRemove }: WebhookEmbedProps) {
+export default function WebhookEmbed({ embed, onUpdate, onRemove, requiredDescription }: WebhookEmbedProps) {
   const addField = () => {
     onUpdate({
       ...embed,
@@ -46,20 +47,40 @@ export default function WebhookEmbed({ embed, onUpdate, onRemove }: WebhookEmbed
         </Button>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="space-y-2">
+        <div className="space-y-2 relative">
           <Label>Title</Label>
+          <span className="absolute right-2 top-0 text-xs text-muted-foreground select-none">
+            {embed.title?.length || 0} / 256
+          </span>
           <Input
             value={embed.title}
-            onChange={(e) => onUpdate({ ...embed, title: e.target.value })}
+            onChange={(e) => {
+              if (e.target.value.length <= 256) {
+                onUpdate({ ...embed, title: e.target.value });
+              }
+            }}
             placeholder="Embed title"
+            maxLength={256}
           />
         </div>
-        <div className="space-y-2">
-          <Label>Description</Label>
-          <Textarea
+        <div className="space-y-2 relative">
+          <Label>Description {requiredDescription && <span className="text-red-500">*</span>}</Label>
+          <span className="absolute right-2 top-0 text-xs text-muted-foreground select-none">
+            {embed.description?.length || 0} / 4096
+          </span>
+          <textarea
             value={embed.description}
-            onChange={(e) => onUpdate({ ...embed, description: e.target.value })}
+            onChange={(e) => {
+              if (e.target.value.length <= 4096) {
+                onUpdate({ ...embed, description: e.target.value });
+              }
+            }}
             placeholder="Embed description"
+            style={{ minHeight: '120px', resize: 'none', overflowY: 'scroll' }}
+            maxLength={4096}
+            rows={6}
+            required={!!requiredDescription}
+            className="scrollbar-custom flex w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
           />
         </div>
         <div className="space-y-2">
@@ -85,6 +106,22 @@ export default function WebhookEmbed({ embed, onUpdate, onRemove }: WebhookEmbed
           </div>
         </div>
 
+        <div className="space-y-2">
+          <Label>Thumbnail</Label>
+          <Input
+            value={embed.thumbnail?.url || ""}
+            onChange={e => onUpdate({ ...embed, thumbnail: { url: e.target.value } })}
+            placeholder="URL da thumbnail"
+          />
+        </div>
+        <div className="space-y-2">
+          <Label>Imagem</Label>
+          <Input
+            value={embed.image?.url || ""}
+            onChange={e => onUpdate({ ...embed, image: { url: e.target.value } })}
+            placeholder="URL da imagem"
+          />
+        </div>
         <div className="space-y-4">
           <div className="flex justify-between items-center">
             <Label>Fields</Label>
@@ -134,14 +171,32 @@ export default function WebhookEmbed({ embed, onUpdate, onRemove }: WebhookEmbed
           ))}
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 relative">
           <Label>Footer</Label>
+          <span className="absolute right-2 top-0 text-xs text-muted-foreground select-none">
+            {embed.footer?.text?.length || 0} / 2048
+          </span>
           <Input
             value={embed.footer?.text}
-            onChange={(e) =>
-              onUpdate({ ...embed, footer: { text: e.target.value } })
-            }
+            onChange={(e) => {
+              if (e.target.value.length <= 2048) {
+                onUpdate({ ...embed, footer: { ...embed.footer, text: e.target.value } });
+              }
+            }}
             placeholder="Footer text"
+            maxLength={2048}
+          />
+          <Input
+            value={embed.footer?.icon_url || ""}
+            onChange={(e) => onUpdate({
+              ...embed,
+              footer: {
+                text: embed.footer?.text || "",
+                icon_url: e.target.value
+              }
+            })}
+            placeholder="URL do ícone do footer (opcional)"
+            className="mt-1"
           />
         </div>
       </CardContent>

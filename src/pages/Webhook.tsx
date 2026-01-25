@@ -3,7 +3,6 @@ import { Plus, Trash2, Send, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LoadingScreen } from "@/components/ui/loading-screen";
 import WebhookEmbed from "@/components/webhook/WebhookEmbed";
@@ -11,10 +10,12 @@ import WebhookPreview from "@/components/webhook/WebhookPreview";
 import { WebhookData, EmbedData } from "@/types/webhook";
 import { useToast } from "@/components/ui/use-toast";
 
+
 export function Webhook() {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [webhookUrl, setWebhookUrl] = useState("");
+  const [formError, setFormError] = useState<string | null>(null);
   const [webhookData, setWebhookData] = useState<WebhookData>({
     content: "",
     username: "",
@@ -65,24 +66,37 @@ export function Webhook() {
   };
 
   const validateWebhookData = () => {
-    if (!webhookUrl) {
+    if (!webhookUrl.trim()) {
+      setFormError("A URL da webhook é obrigatória.");
       toast({
-        title: "Error",
-        description: "Por favor, insira uma URL de webhook",
+        title: "Erro",
+        description: "Por favor, insira uma URL de webhook.",
         variant: "destructive",
       });
       return false;
     }
-
-    if (!webhookData.content && webhookData.embeds.length === 0) {
+    if (!webhookData.username.trim() || webhookData.username.length > 80) {
+      setFormError("O nome de usuário é obrigatório e deve ter entre 1 e 80 caracteres.");
       toast({
-        title: "Error",
-        description: "Por favor, adicione conteúdo ou pelo menos uma incorporação",
+        title: "Erro",
+        description: "O nome de usuário é obrigatório e deve ter entre 1 e 80 caracteres.",
         variant: "destructive",
       });
       return false;
     }
-
+    if (
+      webhookData.embeds.length > 0 &&
+      webhookData.embeds.some((embed) => !embed.description || !embed.description.trim())
+    ) {
+      setFormError("A descrição do embed é obrigatória.");
+      toast({
+        title: "Erro",
+        description: "A descrição do embed é obrigatória.",
+        variant: "destructive",
+      });
+      return false;
+    }
+    setFormError(null);
     return true;
   };
 
@@ -150,24 +164,27 @@ export function Webhook() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="webhook-url">Webhook URL</Label>
+                    <Label htmlFor="webhook-url">Webhook URL <span className="text-red-500">*</span></Label>
                     <Input
                       id="webhook-url"
                       value={webhookUrl}
                       onChange={(e) => setWebhookUrl(e.target.value)}
                       placeholder="https://discord.com/api/webhooks/..."
                       className="font-mono text-sm"
+                      required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="username">Username</Label>
+                    <Label htmlFor="username">Username <span className="text-red-500">*</span></Label>
                     <Input
                       id="username"
                       value={webhookData.username}
                       onChange={(e) =>
-                        setWebhookData(prev => ({ ...prev, username: e.target.value }))
+                        setWebhookData(prev => ({ ...prev, username: e.target.value.slice(0, 80) }))
                       }
-                      placeholder="@NextStudios"
+                      placeholder="@Username"
+                      required
+                      maxLength={80}
                     />
                   </div>
                   <div className="space-y-2">
@@ -181,15 +198,24 @@ export function Webhook() {
                       placeholder="https://example.com/avatar.png"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-2 relative">
                     <Label htmlFor="content">Mensagem</Label>
-                    <Textarea
+                    <span className="absolute right-2 top-0 text-xs text-muted-foreground select-none">
+                      {webhookData.content.length} / 2000
+                    </span>
+                    <textarea
                       id="content"
                       value={webhookData.content}
-                      onChange={(e) =>
-                        setWebhookData(prev => ({ ...prev, content: e.target.value }))
-                      }
+                      onChange={(e) => {
+                        if (e.target.value.length <= 2000) {
+                          setWebhookData(prev => ({ ...prev, content: e.target.value }));
+                        }
+                      }}
                       placeholder="Conteúdo da mensagem..."
+                      style={{ minHeight: '120px', resize: 'none', overflowY: 'scroll' }}
+                      className="scrollbar-custom flex w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                      rows={6}
+                      maxLength={2000}
                     />
                   </div>
                 </CardContent>
@@ -210,10 +236,14 @@ export function Webhook() {
                     embed={embed}
                     onUpdate={(updated) => updateEmbed(index, updated)}
                     onRemove={() => removeEmbed(index)}
+                    requiredDescription
                   />
                 ))}
               </div>
 
+              {formError && (
+                <div className="text-red-500 text-sm mb-2">{formError}</div>
+              )}
               <div className="flex gap-4">
                 <Button onClick={sendWebhook} className="flex-1" size="lg">
                   <Send className="w-4 h-4 mr-2" />
