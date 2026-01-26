@@ -44,12 +44,12 @@ export function Navbar() {
                 {/* Avatar fixo - sem verificação de tema */}
                 <img
                   src="https://imgs.search.brave.com/9Cq7EjjrV3qMAAUHLaQldnWV_sA_DUtFvAcn-PaU9bE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZs/YXRpY29uLmNvbS8y/NTYvNzY0OC83NjQ4/OTI5LnBuZw"
-                  alt="Next Bots Logo"
+                  alt="MySix Logo"
                   className="w-full h-full object-contain rounded-full border-2 border-gray-300 dark:border-gray-600"
                   loading="eager"
                 />
               </div>
-              <span className="font-bold text-xl hidden sm:inline">Next Bots</span>
+              <span className="font-bold text-xl hidden sm:inline">MySix</span>
             </Link>
           </div>
           

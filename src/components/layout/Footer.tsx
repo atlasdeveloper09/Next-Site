@@ -5,7 +5,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center mb-6">
           <div className="mb-6 md:mb-0 flex items-center">
             <a href="https://discord.gg/icones" className="flex items-center">
-              <span className="text-2xl font-semibold">Next Bots</span>
+              <span className="text-2xl font-semibold">MySix</span>
             </a>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
@@ -22,7 +22,7 @@ export function Footer() {
         <hr className="my-6 border-gray-700" />
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-400 sm:text-center">
-            © 2025 <a href="#" className="hover:underline">Next Bots</a>. Todos os direitos reservados.
+            © 2025 <a href="#" className="hover:underline">MySix</a>. Todos os direitos reservados.
           </span>
           <div className="flex mt-4 sm:mt-0">
             <a href="https://discord.gg/icones" className="text-gray-400 hover:text-gray-100 mx-3">
