@@ -23,20 +23,24 @@ const commandCategories = [
     commands: [
       {
         name: "seuprefixo+avatar",
-        description: ["Veja o avatar de um usuário.", "Exemplo: seuprefixo+avatar @usuario/id"]
+        description: ["Veja o avatar de um usuário.", "Exemplo: seuprefixo+avatar (@usuario/id)"]
       },
       {
         name: "seuprefixo+banner",
-        description: ["Veja o banner de um usuário.", "Exemplo: seuprefixo+banner @usuario/id"]
+        description: ["Veja o banner de um usuário.", "Exemplo: seuprefixo+banner (@usuario/id)"]
       },
       {
         name: "seuprefixo+divorciar",
-        description: ["Divorcie de uma pessoa.", "Exemplo: seuprefixo+divorciar @usuario/id"]
+        description: ["Divorcie de uma pessoa.", "Exemplo: seuprefixo+divorciar (@usuario/id)"]
+      },
+      {
+        name: "seuprefixo+embed",
+        description: ["Faça uma embed selecionando o canal para ser postado.", "Exemplo: seuprefixo+embed (#canal/id)"]
       },
       {
         name: "seuprefixo+marry",
-        description: ["Case-se com uma pessoa.", "Exemplo: seuprefixo+marry @usuario/id"]
-      },
+        description: ["Case-se com uma pessoa.", "Exemplo: seuprefixo+marry (@usuario/id)"]
+      }
     ]
   },
   {
@@ -47,9 +51,21 @@ const commandCategories = [
     bgColor: "bg-purple-500/10",
     commands: [
       {
+        name: "seuprefixo+addperm",
+        description: ["Adiciona a permissão para o usuário acessar o painel e demais funções.", "Exemplo: seuprefixo+addperm (@usuario/id)"]
+      },
+      {
+        name: "seuprefixo+listperm",
+        description: ["Lista os usuários que tem permissão ativa no bot."]
+      },
+      {
         name: "seuprefixo+menu",
         description: ["Abre o Painel de Menu"]
       },
+      {
+        name: "seuprefixo+removeperm",
+        description: ["Remove a permissão para o usuário acessar o painel e demais funções.", "Exemplo: seuprefixo+removeperm (@usuario/id)"]
+      }
     ]
   },
   {
@@ -61,68 +77,76 @@ const commandCategories = [
     commands: [
       {
         name: "seuprefixo+addcargo",
-        description: ["Adiciona cargo a um usuário.", "Exemplo: seuprefixo+addcargo @usuario/id"]
+        description: ["Adiciona cargo a um usuário.", "Exemplo: seuprefixo+addcargo (@cargo/id) (@usuario/id)"]
       },
       {
         name: "seuprefixo+addemoji",
-        description: ["Adiciona Emojis em Massa ao Servidor"]
+        description: ["Adiciona Emojis em Massa ao Servidor", "Exemplo: seuprefixo+addemoji [emoji1, emoji2, emoji3]"]
       },
       {
         name: "seuprefixo+adms",
-        description: ["Abre uma Lista com todos os Administradores do Servidor"]
-      },
-      {
-        name: "seuprefixo+ban",
-        description: ["Bane um membro do servidor.", "Exemplo: seuprefixo+ban @usuario/id"]
-      },
-      {
-        name: "seuprefixo+cargo",
-        description: ["Edite um Cargo Por Botões"]
-      },
-      {
-        name: "seuprefixo+clear",
-        description: ["Limpe o Chat.", "Exemplo: seuprefixo+clear quantidade"]
-      },
-      {
-        name: "seuprefixo+deletemoji",
-        description: ["Deleta Emojis em Massa do Servidor"]
-      },
-      {
-        name: "seuprefixo+kick",
-        description: ["Expulsa um membro do servidor.", "Exemplo: seuprefixo+kick @usuario/id"]
-      },
-      {
-        name: "seuprefixo+lock",
-        description: ["Tranca um Chat"]
-      },
-      {
-        name: "seuprefixo+membros",
-        description: ["Confira a Lista de todos os Usuários com o cargo Selecionado"]
-      },
-      {
-        name: "seuprefixo+mute",
-        description: ["Muta um membro.", "Exemplo: seuprefixo+mute @usuario/id"]
-      },
-      {
-        name: "seuprefixo+removercargo",
-        description: ["Remove cargo de um usuário.", "Exemplo: seuprefixo+removercargo @usuario/id"]
-      },
-      {
-        name: "seuprefixo+unban",
-        description: ["Desbane um usuário.", "Exemplo: seuprefixo+unban @usuario/id"]
-      },
-      {
-        name: "seuprefixo+unmute",
-        description: ["Desmuta um usuário.", "Exemplo: seuprefixo+unmute @usuario/id"]
+        description: ["Abre uma lista com todos os administradores do servidor"]
       },
       {
         name: "seuprefixo+adv",
-        description: ["Aplica advertência.", "Exemplo: seuprefixo+adv @usuario/id"]
+        description: ["Aplica advertência.", "Exemplo: seuprefixo+adv (@usuario/id) [motivo]"]
+      },
+      {
+        name: "seuprefixo+ban",
+        description: ["Bane um membro do servidor.", "Exemplo: seuprefixo+ban (@usuario/id) [motivo]"]
+      },
+      {
+        name: "seuprefixo+cargo",
+        description: ["Edite um cargo Por botões", "Exemplo: seuprefixo+cargo (@cargo/id)"]
+      },
+      {
+        name: "seuprefixo+clear",
+        description: ["Limpe o chat interagido.", "Exemplo: seuprefixo+clear [quantidade]"]
+      },
+      {
+        name: "seuprefixo+deletemoji",
+        description: ["Deleta emojis em massa do servidor.", "Exemplo: seuprefixo+deletemoji [emoji1, emoji2, emoji3]"]
+      },
+      {
+        name: "seuprefixo+groles",
+        description: ["Adicione e Remove o cargo caso a proteção geral estiver ativado.", "Exemplo: seuprefixo+groles (@usuario/id)"]
+      },
+      {
+        name: "seuprefixo+kick",
+        description: ["Expulsa um membro do servidor.", "Exemplo: seuprefixo+kick (@usuario/id) [motivo]"]
+      },
+      {
+        name: "seuprefixo+lock",
+        description: ["Tranca um chat interagido."]
+      },
+      {
+        name: "seuprefixo+membros",
+        description: ["Confira a Lista de todos os Usuários com o cargo selecionado", "Exemplo: seuprefixo+membros (@cargo/id)"]
+      },
+      {
+        name: "seuprefixo+mute",
+        description: ["Muta um membro.", "Exemplo: seuprefixo+mute <chat/call/all> (@usuario/id) <tempo> [motivo]"]
       },
       {
         name: "seuprefixo+radv",
-        description: ["Remove advertência.", "Exemplo: seuprefixo+radv @usuario/id"]
+        description: ["Remove advertência.", "Exemplo: seuprefixo+radv (@usuario/id)"]
       },
+      {
+        name: "seuprefixo+registrar",
+        description: ["Registrar o usuário usando sistema de registro.", "Exemplo: seuprefixo+registrar (@usuario/id)"]
+      },
+      {
+        name: "seuprefixo+removercargo",
+        description: ["Remove cargo de um usuário.", "Exemplo: seuprefixo+removercargo (@usuario/id)"]
+      },
+      {
+        name: "seuprefixo+unban",
+        description: ["Desbane um usuário.", "Exemplo: seuprefixo+unban (@usuario/id)"]
+      },
+      {
+        name: "seuprefixo+unmute",
+        description: ["Desmuta um usuário.", "Exemplo: seuprefixo+unmute (@usuario/id)"]
+      }
     ]
   },
   {
@@ -139,7 +163,7 @@ const commandCategories = [
       {
         name: "seuprefixo+panela",
         description: ["Use o comando de panela para dar cargos configurados."]
-      },
+      }
     ]
   },
   {
@@ -151,8 +175,8 @@ const commandCategories = [
     commands: [
       {
         name: "seuprefixo+pd",
-        description: ["Abre a Tabela Mostrando suas Damas"]
-      },
+        description: ["Abre a tabela mostrando suas damas"]
+      }
     ]
   },
   {
@@ -164,12 +188,12 @@ const commandCategories = [
     commands: [
       {
         name: "seuprefixo+ptempo",
-        description: ["Verifica tempo em call"]
+        description: ["Adiciona e remove tempo em call de um usuário", "Exemplo: seuprefixo+ptempo (@usuario/id)"]
       },
       {
         name: "seuprefixo+tempocall",
-        description: ["Veja seu Tempo em Call"]
-      },
+        description: ["Veja seu tempo em call"]
+      }
     ]
   },
   {
@@ -181,20 +205,20 @@ const commandCategories = [
     commands: [
       {
         name: "seuprefixo+addvip",
-        description: ["Adiciona VIP a um usuário.", "Exemplo: seuprefixo+addvip @usuario/id"]
+        description: ["Adiciona VIP a um usuário.", "Exemplo: seuprefixo+addvip (@usuario/id)"]
       },
       {
         name: "seuprefixo+removevip",
-        description: ["Remove VIP de um usuário.", "Exemplo: seuprefixo+removevip @usuario/id"]
+        description: ["Remove VIP de um usuário.", "Exemplo: seuprefixo+removevip (@usuario/id)"]
       },
       {
         name: "seuprefixo+setvip",
-        description: ["Configura VIP para um usuário.", "Exemplo: seuprefixo+setvip @usuario/id"]
+        description: ["Configura VIP para um usuário.", "Exemplo: seuprefixo+setvip (@usuario/id)"]
       },
       {
         name: "seuprefixo+vip",
         description: ["Abre a configuração do seu VIP"]
-      },
+      }
     ]
   },
   {
@@ -206,20 +230,20 @@ const commandCategories = [
     commands: [
       {
         name: "seuprefixo+addvipf",
-        description: ["Adiciona a TAG VIP Família a um Membro"]
+        description: ["Adiciona a TAG VIP Família a um membro", "Exemplo: seuprefixo+addvipf (@usuario/id)"]
       },
       {
         name: "seuprefixo+removevipf",
-        description: ["Remove a TAG VIP Família de um Membro"]
+        description: ["Remove a TAG VIP Família de um membro", "Exemplo: seuprefixo+removevipf (@usuario/id)"]
       },
       {
         name: "seuprefixo+setvipf",
-        description: ["Seta o VIP Família a um Membro"]
+        description: ["Seta o VIP Família a um membro", "Exemplo: seuprefixo+setvipf (@usuario/id)"]
       },
       {
         name: "seuprefixo+vipf",
         description: ["Abre a configuração do VIP Família"]
-      },
+      }
     ]
   }
 ];

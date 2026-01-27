@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from '@/components/theme-provider';
 import { useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import sixLogo from '../photo/six.png';
 
 export function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -40,19 +41,17 @@ export function Navbar() {
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-8">
             <Link to="/" className="flex items-center space-x-3">
-              <div className="w-8 h-8 relative flex-shrink-0">
-                {/* Avatar fixo - sem verificação de tema */}
+              <div className="w-12 h-12 relative flex-shrink-0">
                 <img
-                  src="https://imgs.search.brave.com/9Cq7EjjrV3qMAAUHLaQldnWV_sA_DUtFvAcn-PaU9bE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZs/YXRpY29uLmNvbS8y/NTYvNzY0OC83NjQ4/OTI5LnBuZw"
+                  src={sixLogo}
                   alt="MySix Logo"
-                  className="w-full h-full object-contain rounded-full border-2 border-gray-300 dark:border-gray-600"
+                  className="w-full h-full object-contain"
                   loading="eager"
                 />
               </div>
-              <span className="font-bold text-xl hidden sm:inline">MySix</span>
             </Link>
           </div>
-          
+
           <div className="hidden md:flex space-x-6 justify-center items-center">
             <NavLinks />
           </div>

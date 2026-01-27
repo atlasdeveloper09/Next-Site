@@ -1,13 +1,19 @@
+import sixLogo from "../photo/six.png";
+
 export function Footer() {
   return (
     <footer className="bg-white dark:bg-gradient-to-r dark:from-[#000000] dark:via-[#02040d] dark:to-[#000000]">
       <div className="mx-auto w-full max-w-screen-xl p-6 lg:p-8">
         <div className="flex flex-col md:flex-row justify-between items-center mb-6">
-          <div className="mb-6 md:mb-0 flex items-center">
-            <a href="https://discord.gg/icones" className="flex items-center">
-              <span className="text-2xl font-semibold">MySix</span>
-            </a>
-          </div>
+         <div className="mb-6 md:mb-0 flex items-center">
+  <a href="https://discord.gg/icones" className="flex items-center">
+    <img 
+      src={sixLogo}
+      alt="Logo MySix" 
+      className="h-20 w-auto" // Ajuste a altura conforme necessário
+    />
+  </a>
+</div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             <div>
               <h2 className="mb-4 text-sm font-semibold uppercase">Siga-nos</h2>
@@ -31,7 +37,6 @@ export function Footer() {
               </svg>
               <span className="sr-only">Discord</span>
             </a>
-           
           </div>
         </div>
       </div>

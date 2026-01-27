@@ -23,8 +23,8 @@ const teamMembers: TeamMember[] = [
     role: "CEO & Designer",
     description: "Criador e Designer.",
     icon: [
-    <Briefcase className="w-5 h-5 text-green-600" key="briefcase" />,
-    <Paintbrush className="w-5 h-5 text-purple-600 ml-1" key="paintbrush"/>
+      <Briefcase className="w-5 h-5 text-green-600" key="briefcase" />,
+      <Paintbrush className="w-5 h-5 text-purple-600 ml-1" key="paintbrush"/>
     ], 
   },
 ];
@@ -85,62 +85,71 @@ export function Team() {
 
   if (isLoading) {
     return (
-      <div className="fixed inset-0 flex flex-col items-center justify-center bg-gray-100 dark:bg-[#131315]">
+      <div className="fixed inset-0 flex flex-col items-center justify-center bg-white dark:bg-gradient-to-r dark:from-[#000000] dark:via-[#02040d] dark:to-[#000000]">
         <img
           src="https://i.gifer.com/origin/4d/4dc11d17f5292fd463a60aa2bbb41f6a_w200.gif"
           alt="Carregando..."
           className="w-16 h-16 mb-4"
         />
         <h1 className="text-2xl font-bold text-black dark:text-white">Carregando informações...</h1>
-        <p className="text-gray-500 dark:text-gray-400">Por favor, aguarde enquanto carregamos os dados da equipe.</p>
+        <p className="text-gray-600 dark:text-gray-300">Por favor, aguarde enquanto carregamos os dados da equipe.</p>
       </div>
     );
   }
 
   return (
-    <section className="py-20 bg-white dark:bg-gradient-to-r dark:from-[#000000] dark:via-[#02040d] dark:to-[#000000]">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-4 text-black dark:text-white">Conheça nossa equipe</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-black dark:text-gray-300">
-            Nossa equipe dedicada está aqui para garantir que você tenha a melhor experiência possível.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {teamMembers.map((member, index) => {
-            const user = userData[member.id];
-            const displayName = user?.name || "Carregando...";
-            const avatarUrl = user?.avatar || "https://cdn.discordapp.com/embed/avatars/0.png";
-            
-            return (
-              <div key={index} className="p-6 rounded-lg border bg-gray-100 dark:bg-[#131315]">
-                <div className="flex items-center mb-4">
-                  <img
-                    src={avatarUrl}
-                    alt={displayName}
-                    className="w-16 h-16 rounded-full border-2 border-gray-300 dark:border-gray-600 object-cover"
-                    onError={(e) => {
-                      // Fallback se a imagem não carregar
-                      e.currentTarget.src = "https://cdn.discordapp.com/embed/avatars/0.png";
-                    }}
-                  />
-                  <div className="ml-4">
-                    <h3 className="text-xl font-semibold text-black dark:text-white">
-                      {displayName}
-                    </h3>
-                    <div className="flex items-center text-sm text-muted-foreground text-black dark:text-gray-300">
-                      {member.icon}
-                      <span className="ml-2">{member.role}</span>
+    <div className="bg-white dark:bg-gradient-to-r dark:from-[#000000] dark:via-[#02040d] dark:to-[#000000]">
+      <div className="container mx-auto px-4 py-10">
+        <div className="max-w-7xl mx-auto space-y-8">
+          <div className="text-center space-y-4">
+            <h1 className="text-4xl font-bold text-black dark:text-white">Conheça nossa equipe</h1>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Nossa equipe dedicada está aqui para garantir que você tenha a melhor experiência possível.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {teamMembers.map((member, index) => {
+              const user = userData[member.id];
+              const displayName = user?.name || "Carregando...";
+              const avatarUrl = user?.avatar || "https://cdn.discordapp.com/embed/avatars/0.png";
+              
+              return (
+                <div key={index} className="p-6 rounded-lg border bg-gray-50 dark:bg-[#131315] shadow-sm">
+                  <div className="flex items-center mb-4">
+                    <img
+                      src={avatarUrl}
+                      alt={displayName}
+                      className="w-16 h-16 rounded-full border-2 border-gray-300 dark:border-gray-600 object-cover"
+                      onError={(e) => {
+                        // Fallback se a imagem não carregar
+                        e.currentTarget.src = "https://cdn.discordapp.com/embed/avatars/0.png";
+                      }}
+                    />
+                    <div className="ml-4">
+                      <h3 className="text-xl font-semibold text-black dark:text-white">
+                        {displayName}
+                      </h3>
+                      <div className="flex items-center text-sm text-gray-600 dark:text-gray-300">
+                        {member.icon}
+                        <span className="ml-2">{member.role}</span>
+                      </div>
                     </div>
                   </div>
+                  <p className="text-gray-600 dark:text-gray-300">{member.description}</p>
                 </div>
-                <p className="text-black dark:text-gray-300">{member.description}</p>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/30 rounded-lg p-6">
+            <p className="text-center text-gray-600 dark:text-gray-300">
+              Nossa equipe trabalha constantemente para melhorar e manter a qualidade dos nossos serviços.
+              Para suporte ou dúvidas, entre em contato através dos canais oficiais.
+            </p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

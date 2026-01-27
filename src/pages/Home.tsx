@@ -3,7 +3,7 @@ import { ExternalLink, LayoutGrid, Share2, HeartHandshake, RefreshCcw, History, 
 import { Button } from "@/components/ui/button";
 
 export function Home() {
-  // Dados dos planos
+
   const plans = [
     {
       id: 'comunidade1',
