@@ -1,5 +1,4 @@
-import sixLogo from "../photo/six.png";
-
+let sixLogo = "https://cdn.discordapp.com/attachments/1457847214226538506/1472974835226382583/061480a54520c905ab646b8b93cd8d33-1.png?ex=69948637&is=699334b7&hm=26a344f266bb12ea16003d19f4b184d92514aa518871aae324480efc0566cf86&";
 export function Footer() {
   return (
     <footer className="bg-white dark:bg-gradient-to-r dark:from-[#000000] dark:via-[#02040d] dark:to-[#000000]">
