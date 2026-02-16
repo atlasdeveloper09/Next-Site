@@ -1,18 +1,19 @@
-let sixLogo = "https://cdn.discordapp.com/attachments/1457847214226538506/1472974835226382583/061480a54520c905ab646b8b93cd8d33-1.png?ex=69948637&is=699334b7&hm=26a344f266bb12ea16003d19f4b184d92514aa518871aae324480efc0566cf86&";
 export function Footer() {
+  const sixLogo = "https://cdn.discordapp.com/attachments/1457847214226538506/1472974835226382583/061480a54520c905ab646b8b93cd8d33-1.png?ex=69948637&is=699334b7&hm=26a344f266bb12ea16003d19f4b184d92514aa518871aae324480efc0566cf86&";
+
   return (
     <footer className="bg-white dark:bg-gradient-to-r dark:from-[#000000] dark:via-[#02040d] dark:to-[#000000]">
       <div className="mx-auto w-full max-w-screen-xl p-6 lg:p-8">
         <div className="flex flex-col md:flex-row justify-between items-center mb-6">
-         <div className="mb-6 md:mb-0 flex items-center">
-  <a href="https://discord.gg/icones" className="flex items-center">
-    <img 
-      src={sixLogo}
-      alt="Logo MySix" 
-      className="h-20 w-auto" // Ajuste a altura conforme necessário
-    />
-  </a>
-</div>
+          <div className="mb-6 md:mb-0 flex items-center">
+            <a href="https://discord.gg/icones" className="flex items-center">
+              <img 
+                src={sixLogo}
+                alt="Logo MySix" 
+                className="h-20 w-auto"
+              />
+            </a>
+          </div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
             <div>
               <h2 className="mb-4 text-sm font-semibold uppercase">Siga-nos</h2>
