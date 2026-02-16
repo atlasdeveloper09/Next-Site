@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Briefcase, Paintbrush, Code } from "lucide-react";
+import { Briefcase, Code } from "lucide-react";
 
 interface TeamMember {
   id: string;
