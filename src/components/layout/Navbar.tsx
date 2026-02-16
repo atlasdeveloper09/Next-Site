@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from '@/components/theme-provider';
 import { useState } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import sixLogo from '../photo/six.png';
 
 export function Navbar() {
+  const sixLogo = "https://cdn.discordapp.com/attachments/1457847214226538506/1472974835226382583/061480a54520c905ab646b8b93cd8d33-1.png?ex=69948637&is=699334b7&hm=26a344f266bb12ea16003d19f4b184d92514aa518871aae324480efc0566cf86&";
   const { theme, setTheme } = useTheme();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
