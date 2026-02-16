@@ -10,22 +10,13 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    id: "1442090743803019337",
+    id: "1441581261268193360",
     role: "CEO e Programador",
     description: "Criador e Programador.",
     icon: [
       <Briefcase className="w-5 h-5 text-green-600" key="briefcase" />,
       <Code className="w-5 h-5 text-blue-600 ml-1" key="code" />,
     ],
-  },
-  {
-    id: "1353495280020099246",
-    role: "CEO & Designer",
-    description: "Criador e Designer.",
-    icon: [
-      <Briefcase className="w-5 h-5 text-green-600" key="briefcase" />,
-      <Paintbrush className="w-5 h-5 text-purple-600 ml-1" key="paintbrush"/>
-    ], 
   },
 ];
 
